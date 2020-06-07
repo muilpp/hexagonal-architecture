@@ -1,6 +1,7 @@
 package architecture.usecase.teacher;
 
 import architecture.entity.Teacher;
+import architecture.entity.TeacherAge;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +21,7 @@ public class DeleteTeacherTest {
 
     @Test
     public void deleteNewTeacher() {
-        Teacher teacher = new Teacher("Miquel", 22, "Aviram");
+        Teacher teacher = Teacher.create("Miquel", new TeacherAge(22), "Aviram");
         when(repository.deleteTeacher(teacher)).thenReturn(true);
 
         DeleteTeacher deleteTeacher = new DeleteTeacher(repository);

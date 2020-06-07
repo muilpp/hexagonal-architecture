@@ -1,6 +1,7 @@
 package architecture.usecase.teacher;
 
 import architecture.entity.Teacher;
+import architecture.entity.TeacherAge;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +25,7 @@ public class SearchTeacherTest {
     @Test
     public void findAllTeachersTest() {
         List<Teacher> teacherList = repository.findAll();
-        when(repository.findAll()).thenReturn(Arrays.asList(new Teacher("John", 22, "Barcelona")));
+        when(repository.findAll()).thenReturn(Arrays.asList(Teacher.create("John", new TeacherAge(22), "Barcelona")));
 
         SearchTeacher searchTeacher = new SearchTeacher(repository);
         Assert.assertEquals(searchTeacher.search().size(), 1);
